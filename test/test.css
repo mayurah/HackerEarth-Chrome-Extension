@@ -1,0 +1,15 @@
+.injected{
+  display: inline;
+    margin-left: 1%;
+    font-size: 0.99em;
+    color: gray;
+}
+
+.pipe{
+    color: rgba(128, 128, 128, 0.47);
+}
+
+._search{
+    border-radius: 5px;
+    padding: 6px;
+}
