@@ -309,7 +309,8 @@ var _right = [];
 		  cache: false,
 		  success: function(html){
 		     	var lHtml = html['data'];
-		     	$("._left").append(lHtml);
+		     	// $("._left").append(lHtml);
+		     	$("._left").html(lHtml);
 		  }
 		});
 
@@ -318,24 +319,43 @@ var _right = [];
 		  cache: false,
 		  success: function(html){
 		     	var rHtml = html['data'];
-		     	$("._right").append(rHtml);
+		     	// $("._right").append(rHtml);
+		     	$("._right").html(rHtml);
 		  }
 		});
 		console.log('compare');
+
+			$("._close").click(function(){
+				$(".compare").hide();
+			});
+
+
+		_left = [];
+		_right = [];
+
+		setTimeout( function() { fixWhite(); }, 1000);
+
 	}
 
 
 
 
+function fixWhite()
+{
+		$('.compare').find('a').each(function () {
+		  $(this).css({"color": "white", "text-shadow": "1px 1px 1px gray"});
+		 console.log( $(this).attr("class"));
+		  $(this ).removeClass( "no-color hover-link" ).addClass( "hover-link" );
 
+		});
+		console.log('fixing Black colored content');
+}
 
 // fetchlrAJAX
 function fetchlrAJAX(){
 
 
-	 // After Search  "Match" button trigger
-	
-
+	// After Search  "Match" button trigger
 	// On clicking Compare
 	$("._compare").click(function(){
 	 
@@ -349,22 +369,15 @@ function fetchlrAJAX(){
 	
        	setTimeout( function() {compare(_left[0], _right[0]); }, 500);
 		// Change CSS of Link
-		$('.compare').find('a').each(function () {
-		  $(this).css({"color": "white", "text-shadow": "1px 1px 1px gray"});
-		 console.log( $(this).attr("class"));
-		  $(this ).removeClass( "no-color hover-link" ).addClass( "hover-link" );
 
-		});
 		$(".compare").show();
 
 	});
 
 	// Close Comparison
-	$("._close").click(function(){
-		$(".compare").hide();
-	});
 
 		console.log('fetch LR Ajax');
+
 }
 
 
