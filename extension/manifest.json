@@ -1,11 +1,15 @@
 {
     "name": "HackerEarth Tweaks",
-    "version": "1.0",
+    "version": "0.1",
+    "manifest_version": 2,
     "description": "Another chrome extension to empower hackerearth's super users!",
-    "permissions": ["tabs", "*://*/*"],
-    "content_scripts" : [{
-        "matches" : [ "www.hackerearth.com/*"],
-        "js" : ["he_tweaks.js"]
-    }]
+    "permissions": ["tabs", "*://*/*", "unlimitedStorage","https://goodies.pixabay.com/*"],
+    "content_scripts" : [
+        {
+	       "run_at": "document_idle",
+            "matches" : [ "*://www.hackerearth.com/*"],
+            "js" : ["jquery.min.js", "auto-complete.js", "he_tweaks.js"]
+        }
+    ]
 }
 
