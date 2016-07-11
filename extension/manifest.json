@@ -1,0 +1,11 @@
+{
+    "name": "HackerEarth Tweaks",
+    "version": "1.0",
+    "description": "Another chrome extension to empower hackerearth's super users!",
+    "permissions": ["tabs", "*://*/*"],
+    "content_scripts" : [{
+        "matches" : [ "www.hackerearth.com/*"],
+        "js" : ["he_tweaks.js"]
+    }]
+}
+
