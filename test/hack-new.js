@@ -239,6 +239,7 @@ loadScript("https://goodies.pixabay.com/javascript/auto-complete/auto-complete.j
 	  {
 	 	 var tblPrefix = $('.event-id.hidden').text();
 
+	 	if(leftName == "") { alert('left side is empty'); return 0;}
 	    tx.executeSql('SELECT score_url FROM user_'+ tblPrefix +' WHERE name="' + leftName + '" ', [], function (tx, results)
 	    {
 	                   var row = results.rows.item(0)
@@ -252,6 +253,7 @@ loadScript("https://goodies.pixabay.com/javascript/auto-complete/auto-complete.j
 	  {
 	 	 var tblPrefix = $('.event-id.hidden').text();
 
+	 	if(rightName == "") { alert('right side is empty'); return 0;}
 	    tx.executeSql('SELECT score_url FROM user_'+ tblPrefix +' WHERE name="' + rightName + '" ', [], function (tx, results)
 	    {
 	                   var row = results.rows.item(0)
@@ -264,3 +266,29 @@ loadScript("https://goodies.pixabay.com/javascript/auto-complete/auto-complete.j
 	 fetchLeft();
 	 fetchRight();
 	 console.log(_left + _right);
+
+
+
+
+compare(_left[0], _right[0]);
+
+function compare(lUrl,rUrl){
+	$.ajax({
+	  url: lUrl,
+	  cache: false,
+	  success: function(html){
+	     	var lHtml = html['data'];
+	     	$("._left").append(lHtml);
+	  }
+	});
+
+ 	$.ajax({
+	  url: rUrl,
+	  cache: false,
+	  success: function(html){
+	     	var rHtml = html['data'];
+	     	$("._right").append(rHtml);
+	  }
+	});
+}
+
