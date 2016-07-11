@@ -399,7 +399,7 @@ window.onload = function() {
 
 	 
  	if(window.location.href.indexOf("leaderboard") > -1) {
-       alert("your url contains the name leaderboard");
+       // alert("your url contains the name leaderboard");
        // loadScript("deleteTables.js"); loading hackerearth.com/deleteTable.js // Fix this later
        deleteTable();
        crawlPages();
