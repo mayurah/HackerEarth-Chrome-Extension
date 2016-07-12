@@ -1,6 +1,6 @@
 {
     "name": "HackerEarth Tweaks",
-    "version": "0.1",
+    "version": "0.2",
     "manifest_version": 2,
     "description": "Another chrome extension to empower hackerearth's super users!",
     "permissions": ["tabs", "*://*/*", "unlimitedStorage","https://goodies.pixabay.com/*"],
