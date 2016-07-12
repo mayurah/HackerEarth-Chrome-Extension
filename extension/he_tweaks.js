@@ -28,23 +28,29 @@ loadScript("https://goodies.pixabay.com/javascript/auto-complete/auto-complete.j
 
 
 
-// Deleting Tables
-function deleteTable(){
+// Checking Tables 
+var _tblFlag = true;
+function checkTable(){
 
-	var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024) ;
-
-	db.transaction(function (tx) {
-		var tblPrefix = $('.event-id.hidden').text();
-		var dropTbl = 'DROP TABLE user_' + tblPrefix + ';';
-		tx.executeSql(dropTbl);
-	});
-
-	db.transaction(function (tx) {
-		var tblPrefix = $('.event-id.hidden').text();
-		var dropTbl = 'DROP TABLE problem_' + tblPrefix + ';';
-		tx.executeSql(dropTbl);
-	});
-	console.log('deleteTable');
+   var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024) ;
+   db.transaction(function (tx)
+   {
+		 var tblPrefix = $('.event-id.hidden').text();
+		 var _firstName =  $('.no-color.hover-link.weight-600').html().trim();
+		 
+     tx.executeSql('SELECT name, handle FROM user_'+ tblPrefix +' WHERE name="' + _firstName + '";', [], function (tx, results)
+     {
+        var len = results.rows.length;
+		for(var i = 0 ; i < results.rows.length ; i++)
+		{
+			var row = results.rows.item(i) ;
+			console.log(row.name.trim());
+			_tblFlag = false;
+		}
+	}, null);
+   });
+   console.log('checking previous Data');
+   return _tblFlag;
 }
 
 
@@ -195,19 +201,16 @@ function _autoComplete(){
  	function autoCompleteFetch() {
 	   db.transaction(function (tx)
 	   {
-			 var tblPrefix = $('.event-id.hidden').text();
-
+		 var tblPrefix = $('.event-id.hidden').text();
 	     tx.executeSql('SELECT name, handle FROM user_'+ tblPrefix +' ', [], function (tx, results)
 	     {
 	        var len = results.rows.length;
-
-
-										for(var i = 0 ; i < results.rows.length ; i++)
-										{
-											var row = results.rows.item(i) ;
-											allFields.push(row.name.trim() ) ;
-											// console.log(row.name.trim());
-										}
+			for(var i = 0 ; i < results.rows.length ; i++)
+			{
+				var row = results.rows.item(i) ;
+				allFields.push(row.name.trim() ) ;
+				// console.log(row.name.trim());
+			}
 	     }, null);
 	   });
 	   console.log('autoCompleteFetch');
@@ -401,8 +404,10 @@ window.onload = function() {
  	if(window.location.href.indexOf("leaderboard") > -1) {
        // alert("your url contains the name leaderboard");
        // loadScript("deleteTables.js"); loading hackerearth.com/deleteTable.js // Fix this later
-       deleteTable();
-       crawlPages();
+       // deleteTable();
+       checkTable();
+       
+       if(_tblFlag == true) crawlPages();
        injectSearchHTML();
        	if (!$("link[href='https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css']").length)
 	   		$('<link href="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css" rel="stylesheet">').appendTo("head");
