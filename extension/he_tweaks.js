@@ -28,6 +28,8 @@ loadScript("https://goodies.pixabay.com/javascript/auto-complete/auto-complete.j
 
 
 
+
+
 // Checking Tables 
 var _tblFlag = true;
 function checkTable(){
@@ -47,11 +49,18 @@ function checkTable(){
 			console.log(row.name.trim());
 			_tblFlag = false;
 		}
+		console.log(_tblFlag);
+		if(_tblFlag == true) 
+			crawlPages();   // Function call isn't working
+		else
+			console.log('Not crawling :)');
 	}, null);
    });
    console.log('checking previous Data');
    return _tblFlag;
 }
+
+
 
 
 function crawlPages(){
@@ -163,6 +172,9 @@ if (typeof jQuery != 'undefined') {
  }
  console.log('crawlPages');
 }
+
+
+
 
 
 
@@ -388,38 +400,26 @@ function fetchlrAJAX(){
 // Main Function
 window.onload = function() {
     //run js code here
-     console.log(jQuery.fn.jquery);
-
-
+    console.log(jQuery.fn.jquery);
 	// Loading auto-complete JavaScript and CSS Module
 	// CSS
-	
 	if (!$("link[href='https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css']").length)
 	   $('<link href="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css" rel="stylesheet">').appendTo("head");
 	
 	// JS
-	
-
-	 
  	if(window.location.href.indexOf("leaderboard") > -1) {
        // alert("your url contains the name leaderboard");
        // loadScript("deleteTables.js"); loading hackerearth.com/deleteTable.js // Fix this later
        // deleteTable();
        checkTable();
-       
-       if(_tblFlag == true) crawlPages();
+       //       if(_tblFlag == true) crawlPages();  // This is executed within checkTable()
+
+       setTimeout( function(){	if(_tblFlag == true)  crawlPages();}, 1000);
        injectSearchHTML();
        	if (!$("link[href='https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css']").length)
 	   		$('<link href="https://goodies.pixabay.com/javascript/auto-complete/auto-complete.css" rel="stylesheet">').appendTo("head");
        
        setTimeout( function() {_autoComplete(); }, 5000);
-       
-       
-
-
-
-
-
     } // end of If (leaderboard)
 }
  

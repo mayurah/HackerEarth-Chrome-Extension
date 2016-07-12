@@ -1,2 +1,5 @@
 # HackerEarth-Hacks
-Leader board hacks.
+
+* Leader board hacks to compare two users on HackerEarth platform.
+
+* Pre-fetch URL
