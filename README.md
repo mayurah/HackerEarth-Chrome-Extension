@@ -1,9 +1,18 @@
-# HackerEarth-Hacks
+# HackerEarth Chrome Extension (third party tweaks)
 
 * Leader board hacks to compare two users on HackerEarth platform.
 
-* Pre-fetch URL
+* Pre-fetch URL 
 
+## Tech Stack
+
+* Web SQL
+
+* HTML 5 prefetch meta-tag
+
+* diff.js
+
+* Working with Dynamic DOM elements and AJAX to traverse pages.
 
 ## The End
 
