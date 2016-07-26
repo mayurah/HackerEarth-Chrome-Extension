@@ -7,7 +7,7 @@
 
 # To Install this extension
 
-1.  git clone https://github.com/mayurah/HackerEarth-Hacks.git
+1.  git clone https://github.com/mayurah/HackerEarth-Chrome-Extension.git
 
 2. Visit chrome://extensions in your Chrome browser.
 
@@ -15,7 +15,7 @@
 
 4. Click *Load unpacked extension* to pop up a file-selection dialog.
 
-5. Navigate to  hackerearth-hacks/ (the directory where you cloned the github repository) and select it.
+5. Navigate to  hackerearth-chrome-extension/ (the directory where you cloned the github repository) and select it.
 
 The extension will be loaded right away!
 
