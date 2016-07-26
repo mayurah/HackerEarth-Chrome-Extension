@@ -6,7 +6,7 @@
 
 ## Installation
 
-* Follow this guideline given in (/extension/README.md](https://github.com/mayurah/HackerEarth-Chrome-Extension/blob/master/extension/README.md)
+* Follow this guideline given in [/extension/README.md](https://github.com/mayurah/HackerEarth-Chrome-Extension/blob/master/extension/README.md)
 
 
 ## Tech Stack
